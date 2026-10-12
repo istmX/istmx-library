@@ -16,6 +16,7 @@ import { COMPONENT_SEARCH_ITEMS } from './library/component-search-data'
 
 export const COMPONENT_ICONS = {
   button: IconHandClick,
+  'ai-chat-input': IconMessageChatbot,
   'animated-text': IconLetterT,
   'text-reveal': IconLetterT,
   'streaming-text': IconMessageChatbot,

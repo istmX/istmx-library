@@ -17,144 +17,6 @@ import {
 import { cn } from './utils'
 import type { AttachmentOption, ChatAttachmentKind } from './types'
 
-type AnimatedAccentBorderProps = {
-  color: string
-  duration?: number
-  intensity?: number
-}
-
-function AnimatedAccentBorder({
-  color,
-  duration = 5,
-  intensity = 1,
-}: AnimatedAccentBorderProps) {
-  const borderRef = useRef<SVGSVGElement>(null)
-  const glowFilterId = `${useId().replace(/:/g, '')}-organic-glow`
-  const [size, setSize] = useState({ width: 0, height: 0 })
-  const reduceMotion = useReducedMotion()
-
-  useEffect(() => {
-    const border = borderRef.current
-    if (!border) return
-
-    const observer = new ResizeObserver(() => {
-      const { width, height } = border.getBoundingClientRect()
-      setSize((current) =>
-        Math.abs(current.width - width) < 0.5 &&
-        Math.abs(current.height - height) < 0.5
-          ? current
-          : { width, height },
-      )
-    })
-
-    observer.observe(border)
-    return () => observer.disconnect()
-  }, [])
-
-  const measuredWidth = Math.max(1, size.width)
-  const measuredHeight = Math.max(1, size.height)
-  const width = Math.max(0, measuredWidth - 1)
-  const height = Math.max(0, measuredHeight - 1)
-  const radius = Math.min(15.5, width / 2, height / 2)
-  const pathLength = Math.max(
-    0,
-    2 * (width + height - 4 * radius) + 2 * Math.PI * radius,
-  )
-  const dashLength = pathLength * 0.22
-  const highlightColor = `color-mix(in srgb, ${color} 62%, white)`
-  const animate = reduceMotion ? undefined : { strokeDashoffset: -pathLength }
-  const transition = {
-    duration: Math.max(1, duration),
-    ease: 'linear' as const,
-    repeat: Infinity,
-  }
-  const shape = {
-    x: 0.5,
-    y: 0.5,
-    width,
-    height,
-    rx: radius,
-    fill: 'none',
-  }
-  const animatedShape = {
-    ...shape,
-    strokeDasharray: `${dashLength} ${pathLength - dashLength}`,
-    strokeLinecap: 'round' as const,
-    initial: { strokeDashoffset: 0 },
-    animate,
-    transition,
-  }
-
-  return (
-    <svg
-      ref={borderRef}
-      aria-hidden="true"
-      viewBox={`0 0 ${measuredWidth} ${measuredHeight}`}
-      className="pointer-events-none absolute -top-px -left-px z-20 overflow-visible"
-      style={{
-        width: 'calc(100% + 2px)',
-        height: 'calc(100% + 2px)',
-        opacity: Math.min(1, Math.max(0, intensity)),
-      }}
-    >
-      <defs>
-        <filter
-          id={glowFilterId}
-          x="-35%"
-          y="-60%"
-          width="170%"
-          height="220%"
-          colorInterpolationFilters="sRGB"
-        >
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.01 0.08"
-            numOctaves="2"
-            seed="7"
-            result="edgeNoise"
-          />
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="edgeNoise"
-            scale="18"
-            xChannelSelector="R"
-            yChannelSelector="G"
-            result="unevenEdge"
-          />
-          <feGaussianBlur in="unevenEdge" stdDeviation="10" />
-        </filter>
-      </defs>
-      <rect {...shape} stroke={color} strokeWidth="1.5" opacity="0.38" />
-      <rect
-        {...shape}
-        stroke={color}
-        strokeWidth="8"
-        filter={`url(#${glowFilterId})`}
-        opacity="0.55"
-      />
-      <motion.rect
-        {...animatedShape}
-        stroke={color}
-        strokeWidth="14"
-        filter={`url(#${glowFilterId})`}
-        opacity="0.7"
-      />
-      <motion.rect
-        {...animatedShape}
-        stroke={color}
-        strokeWidth="8"
-        filter={`url(#${glowFilterId})`}
-        opacity="0.9"
-      />
-      <motion.rect
-        {...animatedShape}
-        stroke={highlightColor}
-        strokeWidth="3.5"
-      />
-    </svg>
-  )
-}
-
 const subscribeToNothing = () => () => {}
 const getClientSnapshot = () => true
 const getServerSnapshot = () => false
@@ -325,7 +187,7 @@ export default function AttachmentDialog({
             style={
               { '--chat-accent': accentColor ?? '#0369a1' } as CSSProperties
             }
-            className="text-foreground relative flex max-h-[min(50vh,18rem)] w-[min(19rem,calc(100vw-1.5rem))] flex-col rounded-2xl border border-transparent shadow-[0_18px_54px_-16px_rgba(0,0,0,0.65)]"
+            className="text-foreground relative flex max-h-[min(50vh,18rem)] w-[min(19rem,calc(100vw-1.5rem))] flex-col rounded-2xl border border-border/70 shadow-sm"
           >
             <div className="bg-background text-foreground relative z-10 flex max-h-[min(50vh,18rem)] w-full flex-col overflow-hidden rounded-2xl">
               <div className="border-border/60 flex items-start gap-2.5 border-b px-3 py-3 sm:px-4">
@@ -396,7 +258,6 @@ export default function AttachmentDialog({
                 {options.length === 1 ? 'option' : 'options'}
               </div>
             </div>
-            <AnimatedAccentBorder color={accentColor ?? '#0369a1'} />
           </motion.div>
         </motion.div>
       ) : null}

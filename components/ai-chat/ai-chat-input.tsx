@@ -182,6 +182,7 @@ export type AiChatInputProps = {
   disabled?: boolean
   className?: string
   textareaClassName?: string
+  accentColor?: string
 
   glow?: false | AiChatInputGlow
   onAttachmentError?: (message: string) => void
@@ -289,7 +290,8 @@ export function AiChatInput({
   disabled = false,
   className,
   textareaClassName,
-  glow = {},
+  accentColor,
+  glow = false,
   onAttachmentError,
 }: AiChatInputProps) {
   const rootId = useId().replace(/:/g, '')
@@ -314,7 +316,7 @@ export function AiChatInput({
     !disabled && !busy && (value.trim().length > 0 || attachments.length > 0)
   const sendState = busy ? 'busy' : canSend ? 'ready' : sent ? 'sent' : 'idle'
   const glowOptions = typeof glow === 'object' ? glow : {}
-  const glowColor = glowOptions.color ?? '#0369a1'
+  const glowColor = accentColor ?? glowOptions.color ?? '#0369a1'
   function updateValue(next: string) {
     const bounded = next.slice(0, maxLength)
     setValue(bounded)
@@ -471,7 +473,7 @@ export function AiChatInput({
     <div
       style={{ '--chat-accent': glowColor } as CSSProperties}
       className={cn(
-        'bg-background/85 relative rounded-2xl border border-transparent shadow-[0_20px_54px_-36px_rgba(0,0,0,0.75)] backdrop-blur-xl transition-[border-color] duration-300 focus-within:border-transparent',
+        'bg-background/85 relative rounded-2xl border border-border/70 shadow-sm backdrop-blur-xl transition-[border-color] duration-300 focus-within:border-foreground/40',
         disabled && 'opacity-60',
         className,
       )}
@@ -681,7 +683,7 @@ export function AiChatInput({
         }
         onSelect={runAction}
         onClose={() => closeMenu(true)}
-        accentColor={typeof glow === 'object' ? glow.color : undefined}
+        accentColor={accentColor ?? (typeof glow === 'object' ? glow.color : undefined)}
       />
     </div>
   )

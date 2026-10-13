@@ -63,6 +63,12 @@ Add the scroll-scrubbed image story with:
 npx @istmx/ui add scroll-story-cards
 ```
 
+Add the scroll parallax hero with:
+
+```sh
+npx @istmx/ui add scroll-parallax-hero
+```
+
 Add the interactive pixel cat with:
 
 ```sh
@@ -80,21 +86,6 @@ Add the complete AI chat block with:
 ```sh
 npx @istmx/ui add ai-chat-block
 ```
-
-Add only the reusable chat input with:
-
-```sh
-npx @istmx/ui add ai-chat-input
-```
-
-This command copies the input and its attachment, voice, send, type, and class
-helper files into `components/ai-chat/`. The composer and upload menu each
-contain their own accent-border effect, so there is no extra effect file to
-install. Import the input from
-`@/components/ai-chat/ai-chat-input`. It installs Motion, Tabler Icons, clsx,
-and tailwind-merge when they are missing. React and Tailwind CSS are expected
-to be configured by your app. The input uses Tailwind utility classes and does
-not need a stylesheet.
 
 The CLI detects your package manager, copies the editable component to
 `components/ui/animated-text.tsx`, adds the shared `cn` helper at
@@ -253,7 +244,6 @@ npx @istmx/ui add infinite-image-canvas
 npx @istmx/ui add dock-navigation
 npx @istmx/ui add mobile-menu-dock
 npx @istmx/ui add pixel-cat
-npx @istmx/ui add ai-chat-input
 npx @istmx/ui add ai-chat-block
 npx @istmx/ui add scroll-story-cards
 ```

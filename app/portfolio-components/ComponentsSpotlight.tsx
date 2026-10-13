@@ -5,6 +5,7 @@ import {
   IconArrowRight,
   IconCat,
   IconHandClick,
+  IconLayoutGrid,
   IconLayoutNavbar,
   IconLetterT,
   IconMessageChatbot,
@@ -16,7 +17,6 @@ import { COMPONENT_SEARCH_ITEMS } from './library/component-search-data'
 
 export const COMPONENT_ICONS = {
   button: IconHandClick,
-  'ai-chat-input': IconMessageChatbot,
   'animated-text': IconLetterT,
   'text-reveal': IconLetterT,
   'streaming-text': IconMessageChatbot,
@@ -27,6 +27,8 @@ export const COMPONENT_ICONS = {
   'mobile-menu-dock': IconSearch,
   'scroll-story-cards': IconArrowsMoveVertical,
   'pixel-cat': IconCat,
+  'bento-grid': IconLayoutGrid,
+  'scroll-parallax-hero': IconArrowsMoveVertical,
 } as const
 
 export default function ComponentsSpotlight() {

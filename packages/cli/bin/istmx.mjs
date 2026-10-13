@@ -6,7 +6,7 @@ import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const VERSION = '0.1.10'
+const VERSION = '0.1.11'
 const COMPONENTS = {
   button: { fileName: 'button.tsx' },
   'animated-text': { fileName: 'animated-text.tsx' },
@@ -28,15 +28,13 @@ const COMPONENTS = {
     dependencies: ['@tabler/icons-react'],
   },
   'pixel-cat': { fileName: 'pixel-cat.tsx' },
+  'bento-grid': {
+    fileName: 'bento-grid.tsx',
+    dependencies: ['@tabler/icons-react'],
+  },
+  'scroll-parallax-hero': { fileName: 'scroll-parallax-hero.tsx' },
   'ai-chat-block': {
     directory: 'ai-chat-block',
-    dependencies: ['@tabler/icons-react'],
-    utility: false,
-  },
-  'ai-chat-input': {
-    directory: 'ai-chat-input',
-    targetDirectory: 'ai-chat',
-    importPath: '@/components/ai-chat/ai-chat-input',
     dependencies: ['@tabler/icons-react'],
     utility: false,
   },

@@ -7,19 +7,25 @@ import PillTabs from '@/app/portfolio-components/PillTabs'
 import CodeBlock from '@/app/portfolio-components/CodeBlock'
 import DoubleBorderCard from '@/app/portfolio-components/DoubleBorderCard'
 import PortfolioSectionFrame from '@/app/portfolio-components/PortfolioSectionFrame'
+import Image from 'next/image'
 import {
+  IconAccessible,
   IconArrowsJoin,
   IconArrowsMaximize,
   IconBraces,
   IconCode,
   IconChevronDown,
   IconComponents,
+  IconCube,
   IconExternalLink,
+  IconGauge,
   IconHome,
   IconMail,
   IconPackage,
+  IconPalette,
   IconPoint,
   IconUser,
+  IconWand,
   IconX,
 } from '@tabler/icons-react'
 import DockNavigation from '@/components/ui/dock-navigation'
@@ -32,6 +38,8 @@ import ImageAccordion from '@/components/ui/image-accordion'
 import ImageTrail from '@/components/ui/image-trail'
 import InfiniteImageCanvas from '@/components/ui/infinite-image-canvas'
 import ScrollStoryCards from '@/components/ui/scroll-story-cards'
+import BentoGrid from '@/components/ui/bento-grid'
+import ScrollParallaxHero from '@/components/ui/scroll-parallax-hero'
 import {
   PixelCat,
   type PixelCatBreed,
@@ -46,8 +54,6 @@ import { IMAGE_TRAIL_IMAGES } from './image-trail-data'
 import { INFINITE_IMAGE_CANVAS_IMAGES } from './infinite-image-canvas-data'
 import { SCROLL_STORY_CARDS } from './scroll-story-cards-data'
 import { TEXT_REVEAL_QUOTE } from './text-reveal-data'
-import AiChatInput from '@/components/ai-chat/ai-chat-input'
-import { DEFAULT_ATTACHMENT_OPTIONS } from '@/components/ai-chat/default-attachments'
 
 const DIFF_EXAMPLE = `+ import { AnimatedText } from "@/components/ui/animated-text"
 
@@ -226,6 +232,80 @@ function PixelCatPreview({ fullScreen = false }: { fullScreen?: boolean }) {
   )
 }
 
+function BentoGridPreview({ fullScreen = false }: { fullScreen?: boolean }) {
+  return (
+    <div
+      className={cn(
+        'w-full px-2 py-4 sm:px-4',
+        fullScreen &&
+          'flex min-h-svh flex-col justify-center px-4 py-16 sm:px-8',
+      )}
+    >
+      <BentoGrid
+        items={[
+          {
+            title: 'Craft at every scale',
+            description:
+              'Spacing, typography rhythm, and visual contrast compound into interfaces people feel before they notice.',
+            icon: <IconPalette size={18} stroke={1.5} />,
+            badge: 'Design',
+            cta: 'Explore design tokens',
+            href: '/library',
+          },
+          {
+            title: 'Motion with meaning',
+            description:
+              'Every easing curve, spring tension, and stagger delay is tuned so interface micro-interactions feel physical.',
+            icon: <IconWand size={18} stroke={1.5} />,
+            badge: 'Physics',
+            cta: 'View physics presets',
+            href: '/library/animated-text',
+          },
+          {
+            title: 'The architecture beneath',
+            description:
+              'What you see is just the surface. Underneath lives an ecosystem of composable tokens, strict types, and structural rules designed to scale.',
+            icon: <IconCube size={18} stroke={1.5} />,
+            badge: 'System',
+            cta: 'Inspect system',
+            href: '/library',
+            header: (
+              <div className="relative h-full min-h-[180px] w-full sm:min-h-[210px] md:min-h-[230px]">
+                <Image
+                  src={IMAGE_ACCORDION_IMAGES[4].src}
+                  alt={IMAGE_ACCORDION_IMAGES[4].alt}
+                  fill
+                  unoptimized
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 720px, 500px"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                />
+              </div>
+            ),
+          },
+          {
+            title: 'Accessible by default',
+            description:
+              'Visible focus indicators, full keyboard navigation, and reduced-motion preferences built into component contracts.',
+            icon: <IconAccessible size={18} stroke={1.5} />,
+            badge: 'A11y',
+            cta: 'Check compliance specs',
+            href: '/library',
+          },
+          {
+            title: 'Built to perform',
+            description:
+              'Lean DOM footprints, tree-shakable modular exports, and minimal re-renders keep modern apps lightning fast.',
+            icon: <IconGauge size={18} stroke={1.5} />,
+            badge: 'Perf',
+            cta: 'View source on GitHub',
+            href: 'https://github.com/istmX',
+          },
+        ]}
+      />
+    </div>
+  )
+}
+
 function Preview({
   item,
   scrollContainerRef,
@@ -235,26 +315,6 @@ function Preview({
   scrollContainerRef?: RefObject<HTMLElement | null>
   fullScreen?: boolean
 }) {
-  if (item.slug === 'ai-chat-input') {
-    return (
-      <div
-        className={cn(
-          'mx-auto flex min-h-56 w-full max-w-3xl items-center px-4 py-8 sm:px-8',
-          fullScreen && 'min-h-svh max-w-5xl',
-        )}
-      >
-        <AiChatInput
-          actions={DEFAULT_ATTACHMENT_OPTIONS}
-          showVoice
-          maxAttachments={5}
-          maxFileSizeBytes={10 * 1024 * 1024}
-          onSubmit={() => {}}
-          className="w-full"
-        />
-      </div>
-    )
-  }
-
   if (item.slug === 'button') {
     return (
       <div
@@ -545,6 +605,20 @@ function Preview({
     return <PixelCatPreview fullScreen={fullScreen} />
   }
 
+  if (item.slug === 'bento-grid') {
+    return <BentoGridPreview fullScreen={fullScreen} />
+  }
+
+  if (item.slug === 'scroll-parallax-hero') {
+    return (
+      <ScrollParallaxHero
+        image={IMAGE_ACCORDION_IMAGES[4].src}
+        imageAlt={IMAGE_ACCORDION_IMAGES[4].alt}
+        scrollContainerRef={scrollContainerRef}
+      />
+    )
+  }
+
   return null
 }
 
@@ -728,7 +802,9 @@ export default function LibraryItemDocumentation({
           </div>
         </div>
 
-        {view === 'preview' && item.slug === 'scroll-story-cards' ? (
+        {view === 'preview' &&
+        (item.slug === 'scroll-story-cards' ||
+          item.slug === 'scroll-parallax-hero') ? (
           <div className="mt-3">
             <Preview item={item} />
           </div>

@@ -1,7 +1,16 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import {
+  IconPalette,
+  IconWand,
+  IconCube,
+  IconAccessible,
+  IconGauge,
+} from '@tabler/icons-react'
 import { AnimatedText } from '@/components/ui/animated-text'
+import BentoGrid from '@/components/ui/bento-grid'
 import ImageAccordion from '@/components/ui/image-accordion'
 import ImageTrail from '@/components/ui/image-trail'
 import ScrollParallaxHero from '@/components/ui/scroll-parallax-hero'
@@ -14,7 +23,6 @@ import { INFINITE_IMAGE_CANVAS_IMAGES } from '@/app/portfolio-components/library
 import { SCROLL_STORY_CARDS } from '@/app/portfolio-components/library/scroll-story-cards-data'
 import { COMPONENT_SEARCH_ITEMS } from '@/app/portfolio-components/library/component-search-data'
 import StateButtonShowcase from '@/app/portfolio-components/StateButtonShowcase'
-import AiChatInputDemo from './AiChatInputDemo'
 import DockNavigationDemo from './DockNavigationDemo'
 import CatPlayground from './CatPlayground'
 import StreamingTextDemo from './StreamingTextDemo'
@@ -27,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 const DEMOS = [
-  { id: 'ai-chat-input', label: 'AI chat input' },
+  { id: 'bento-grid', label: 'Bento grid' },
   { id: 'action-buttons', label: 'Action buttons' },
   { id: 'animated-text', label: 'Animated text' },
   { id: 'streaming-text', label: 'Streaming text' },
@@ -57,7 +65,7 @@ function DemoSection({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="border-border/70 bg-surface/10 scroll-mt-6 rounded-2xl border p-4 sm:p-6"
+      className="border-border/70 bg-surface/10 w-full min-w-0 max-w-full scroll-mt-6 rounded-2xl border p-4 sm:p-6"
     >
       <div className="flex flex-wrap items-start gap-x-4 gap-y-2">
         <div className="min-w-0 flex-1">
@@ -72,7 +80,7 @@ function DemoSection({
           </p>
         </div>
       </div>
-      <div className="border-border/50 mt-5 border-t pt-5 sm:mt-6 sm:pt-6">
+      <div className="border-border/50 mt-5 w-full min-w-0 max-w-full overflow-x-clip border-t pt-5 sm:mt-6 sm:pt-6">
         {children}
       </div>
     </section>
@@ -83,7 +91,7 @@ export default function TestPage() {
   return (
     <main
       id="test-top"
-      className="mx-auto w-full max-w-screen-2xl px-4 pt-8 pb-24 sm:px-6 sm:pt-12 lg:px-8"
+      className="mx-auto w-full min-w-0 max-w-7xl px-4 pt-8 pb-24 sm:px-6 sm:pt-12 lg:px-8"
     >
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-10">
         <div>
@@ -126,13 +134,68 @@ export default function TestPage() {
         ))}
       </nav>
 
-      <div className="grid gap-5 sm:gap-6">
+      <div className="grid w-full min-w-0 grid-cols-1 gap-5 sm:gap-6">
         <DemoSection
-          id="ai-chat-input"
-          title="AI chat input"
-          description="A composer for AI apps: an add menu for photos and files, voice input, and send — all with Motion micro-interactions."
+          id="bento-grid"
+          title="Bento grid"
+          description="A flexible, open-source 2-1-2 bento grid with double borders, 4px spacing, 315° repeating gradient texture, action links, and customizable header slots."
         >
-          <AiChatInputDemo />
+          <BentoGrid
+            items={[
+              {
+                title: 'Craft at every scale',
+                description:
+                  'Spacing, typography rhythm, and visual contrast compound into interfaces people feel before they notice.',
+                icon: <IconPalette size={18} stroke={1.5} />,
+                cta: 'Explore design tokens',
+                href: '/library',
+              },
+              {
+                title: 'Motion with meaning',
+                description:
+                  'Every easing curve, spring tension, and stagger delay is tuned so interface micro-interactions feel physical.',
+                icon: <IconWand size={18} stroke={1.5} />,
+                cta: 'View physics presets',
+                href: '/library/animated-text',
+              },
+              {
+                title: 'The architecture beneath',
+                description:
+                  'What you see is just the surface. Underneath lives an ecosystem of composable tokens, strict types, and structural rules designed to scale without friction.',
+                icon: <IconCube size={18} stroke={1.5} />,
+                cta: 'Inspect component system',
+                href: '/library',
+                header: (
+                  <div className="relative h-full min-h-[180px] w-full sm:min-h-[210px] md:min-h-[230px]">
+                    <Image
+                      src={IMAGE_ACCORDION_IMAGES[4].src}
+                      alt={IMAGE_ACCORDION_IMAGES[4].alt}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 720px, 500px"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
+                ),
+              },
+              {
+                title: 'Accessible by default',
+                description:
+                  'Visible focus indicators, full keyboard navigation, and reduced-motion preferences built into the component contracts.',
+                icon: <IconAccessible size={18} stroke={1.5} />,
+                cta: 'Check compliance specs',
+                href: '/library',
+              },
+              {
+                title: 'Built to perform',
+                description:
+                  'Lean DOM footprints, tree-shakable modular exports, and minimal re-renders keep modern apps lightning fast.',
+                icon: <IconGauge size={18} stroke={1.5} />,
+                cta: 'View source on GitHub',
+                href: 'https://github.com/istmX',
+              },
+            ]}
+          />
         </DemoSection>
 
         <DemoSection
@@ -148,7 +211,7 @@ export default function TestPage() {
           title="Animated text"
           description="Rotating words with a mix of blur, fade, and slide transitions."
         >
-          <div className="bg-surface/30 flex min-h-40 flex-wrap items-center justify-center gap-x-3 rounded-xl px-4 py-8 text-center sm:min-h-48">
+          <div className="bg-surface/30 flex min-h-40 w-full flex-wrap items-center justify-center gap-x-3 rounded-xl px-4 py-8 text-center sm:min-h-48">
             <span className="font-display text-2xl tracking-tight sm:text-4xl">
               Make things
             </span>
@@ -203,7 +266,7 @@ export default function TestPage() {
         >
           <ImageTrail
             images={IMAGE_TRAIL_IMAGES}
-            className="min-h-64 sm:min-h-80"
+            className="min-h-64 w-full sm:min-h-80"
             throttle={160}
             maxTrailItems={5}
           />
@@ -245,7 +308,7 @@ export default function TestPage() {
           title="Mobile menu dock"
           description="Open the compact menu, search the component catalog, or follow one of the sample links."
         >
-          <div className="bg-surface/30 flex min-h-64 items-center justify-center rounded-xl p-4 sm:min-h-72">
+          <div className="bg-surface/30 flex min-h-64 w-full items-center justify-center rounded-xl p-4 sm:min-h-72">
             <MobileMenuDock
               placement="inline"
               searchItems={COMPONENT_SEARCH_ITEMS}

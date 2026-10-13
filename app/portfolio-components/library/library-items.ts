@@ -8,7 +8,8 @@ import { pixelCatSourceCode } from './pixel-cat-source'
 import { scrollStoryCardsSourceCode } from './scroll-story-cards-source'
 import { streamingTextSourceCode } from './streaming-text-source'
 import { textRevealSourceCode } from './text-reveal-source'
-import { aiChatInputSourceCode } from './ai-chat-input-source'
+import { bentoGridSourceCode } from './bento-grid-source'
+import { scrollParallaxHeroSourceCode } from './scroll-parallax-hero-source'
 
 export type LibraryProp = {
   name: string
@@ -46,102 +47,6 @@ export type LibraryItem = {
 }
 
 export const LIBRARY_ITEMS: LibraryItem[] = [
-  {
-    slug: 'ai-chat-input',
-    name: 'AI Chat Input',
-    description:
-      'A configurable chat composer with animated attachment options, file previews, voice input, and send or stop controls.',
-    seoTitle: 'AI Chat Input — React Chat Composer | ISTMX',
-    seoDescription:
-      'An installable, Tailwind-styled React chat input with attachment previews, optional voice input, file limits, and busy-state controls.',
-    keywords: ['ai chat input', 'chat composer', 'react chat input', 'file attachments'],
-    accessibility:
-      'Includes a labelled message field, keyboard-operable attachment menu, labelled action buttons, focus restoration, and reduced-motion-aware transitions.',
-    interaction:
-      'The attachment control opens a compact animated menu. Selected files appear as removable previews above the composer. Submit calls onSubmit with the message and attachments; busy mode changes the send action to a stop action.',
-    limitations:
-      'The component only collects files and emits submit events. Your application must validate uploads again on the server and connect onSubmit to its own model or API handler. Voice capture depends on browser speech recognition support.',
-    category: 'AI',
-    commandName: 'ai-chat-input',
-    dependencies: ['React', 'Motion', 'Tailwind CSS', 'clsx', 'tailwind-merge', '@tabler/icons-react'],
-    features: [
-      'Animated file type menu with configurable accepted types and selection behavior.',
-      'Image, video, audio, and document previews with remove controls.',
-      'Optional voice input with listening feedback.',
-      'Growing textarea with configurable row, file count, and file size limits.',
-      'Busy state swaps send for stop and supports cancellation callbacks.',
-      'Uses a restrained rounded border by default, with an optional animated accent glow.',
-      'Tailwind classes only; no standalone stylesheet is required.',
-    ],
-    composition: ['AiChatInput', '├── AttachmentDialog', '├── AttachmentPreview', '├── VoiceButton', '└── SendButton'],
-    files: [
-      { path: 'ai-chat-input.tsx', role: 'Public component. Owns message state, attachment state, submit behavior, textarea sizing, and its optional accent glow.' },
-      { path: 'attachment.tsx', role: 'Renders the rounded attachment chooser dialog and selected-file preview cards.' },
-      { path: 'send-button.tsx', role: 'Renders the send, sending, stop, and sent-feedback control.' },
-      { path: 'voice-button.tsx', role: 'Renders the optional browser speech input control and listening state.' },
-      { path: 'types.ts', role: 'Defines attachment options, attachment data, and shared chat types used by the input helpers.' },
-      { path: 'utils.ts', role: 'Provides the local cn helper using clsx and tailwind-merge.' },
-    ],
-    wiring: [
-      'The CLI copies all six files into components/ai-chat and the imports between them are already connected. No manual relinking is needed.',
-      'Your screen imports AiChatInput from components/ai-chat/ai-chat-input and passes actions plus onSubmit. The component sends the message and selected attachments to your callback.',
-      'ai-chat-input.tsx imports AttachmentDialog and AttachmentPreview, SendButton, VoiceButton, shared types, and the local cn helper. Both the input and attachment dialog use rounded borders without a default glow.',
-      'The standalone input does not include default attachment choices. Define actions in your app, or use DEFAULT_ATTACHMENT_OPTIONS when the complete AI chat block is installed.',
-      'For the complete block, chat-composer.tsx is already connected to AiChatInput, and ai-chat-block.tsx connects that composer to the message list and chat state.',
-    ],
-    props: [
-      { name: 'actions?', type: 'readonly AiChatInputAction[]', description: 'Attachment menu options, including label, description, accepted file types, and multiple selection.' },
-      { name: 'onSubmit?', type: '(value: string, attachments: AiChatInputAttachment[]) => void', description: 'Receives the message text and selected File objects.' },
-      { name: 'onAttachmentsChange?', type: '(attachments: AiChatInputAttachment[]) => void', description: 'Receives the current attachment list when it changes.' },
-      { name: 'busy?', type: 'boolean', description: 'Shows the stop action while a response is in progress.' },
-      { name: 'onStop?', type: '() => void', description: 'Called when the user activates the stop control.' },
-      { name: 'showVoice?', type: 'boolean', description: 'Shows browser voice input when supported.' },
-      { name: 'maxLength? / maxRows?', type: 'number', description: 'Limits message length and textarea growth.' },
-      { name: 'maxAttachments? / maxFileSizeBytes?', type: 'number', description: 'Limits the number and individual size of selected files.' },
-      { name: 'accentColor?', type: 'string', description: 'Sets the accent color for input actions and attachment UI without enabling the animated glow.' },
-      { name: 'glow?', type: 'false | AiChatInputGlow', description: 'Enables and configures the animated outline color, duration, and intensity. Disabled by default.' },
-      { name: 'className? / textareaClassName?', type: 'string', description: 'Adds Tailwind classes to the composer and message field.' },
-    ],
-    sourceCode: aiChatInputSourceCode,
-    usage: `import AiChatInput, { type AiChatInputAction } from '@/components/ai-chat/ai-chat-input'
-
-const actions: AiChatInputAction[] = [
-  {
-    id: 'image',
-    label: 'Add images',
-    description: 'PNG, JPG, or WebP',
-    accept: 'image/png,image/jpeg,image/webp',
-    multiple: true,
-  },
-  {
-    id: 'file',
-    label: 'Add files',
-    description: 'Documents and text files',
-    accept: '.pdf,.txt,.md,.doc,.docx',
-    multiple: true,
-  },
-]
-
-async function sendMessage({ message, files }: { message: string; files: File[] }) {
-  const body = new FormData()
-  body.set('message', message)
-  files.forEach((file) => body.append('files', file))
-
-  const response = await fetch('/api/chat', { method: 'POST', body })
-  if (!response.ok) throw new Error('The message could not be sent.')
-}
-
-<AiChatInput
-  actions={actions}
-  maxAttachments={5}
-  maxFileSizeBytes={10 * 1024 * 1024}
-  onSubmit={(message, attachments) => {
-    void sendMessage({ message, files: attachments.map(({ file }) => file) })
-  }}
-/>`,
-    example:
-      'Install the component, connect onSubmit to your application handler, and pass only the attachment options your product supports. The included helper files are installed alongside the input under components/ai-chat.',
-  },
   {
     slug: 'button',
     name: 'Button',
@@ -1764,6 +1669,377 @@ export default function InteractiveCard() {
 +   ...
 +   <PixelCat breed="orange" size={36} />
 + </div>`,
+  },
+  {
+    slug: 'bento-grid',
+    name: 'Bento Grid',
+    description:
+      'A flexible, open-source 2-1-2 bento grid with concentric double borders, 315° repeating gradient texture, customizable media slots, and Next.js link navigation.',
+    seoTitle: 'Bento Grid — Configurable React Bento Grid Component | ISTMX',
+    seoDescription:
+      'An open-source, highly configurable 2-1-2 bento grid for Next.js and React featuring concentric double borders, repeating background textures, media slots, and smooth motion.',
+    keywords: [
+      'react bento grid',
+      'nextjs bento grid',
+      'bento grid component',
+      'tailwind bento grid',
+      'motion bento grid',
+      'bento layout',
+    ],
+    accessibility:
+      'Uses semantic headings and article structures, fully accessible Next.js Link or button navigation, visible keyboard focus indicators, and reduced-motion-aware animations.',
+    interaction:
+      'Hovering any card triggers subtle border brightening, surface lift, and micro-interactions on the card icon and call-to-action arrow. Cards support internal route navigation via Next.js Link, external URLs with target="_blank", or custom click handlers.',
+    limitations:
+      'Optimized for responsive 1-column mobile layouts and 4-column desktop grids. For fluid masonry layouts with variable-height infinite scrolling, use a dedicated masonry grid.',
+    category: 'Layout',
+    commandName: 'bento-grid',
+    dependencies: [
+      'React',
+      'Next.js',
+      'Motion',
+      'Tailwind CSS',
+      '@tabler/icons-react',
+      'clsx',
+      'tailwind-merge',
+    ],
+    features: [
+      'Fully responsive: 1 column on mobile, 2 columns with centered hero banner on tablet, and 4-column 2-1-2 bento on desktop.',
+      'Concentric double border with exact 4px gap and responsive hover states.',
+      'Configurable 315° repeating linear gradient background at both grid and card levels.',
+      'Supports both data-driven props (items={...}) and composable JSX children (<BentoCard />).',
+      'Seamless internal Next.js Link page navigation and automatic external URL handling.',
+      'Rich content slots for icons, badges, media headers, footers, and call-to-action links.',
+      'Respects prefers-reduced-motion preferences automatically.',
+    ],
+    composition: [
+      'BentoGrid',
+      '├── Repeating gradient background',
+      '└── BentoCard (concentric double border)',
+      '    ├── Icon badge with micro-interaction',
+      '    ├── Title & description',
+      '    ├── Header slot (media / preview / image)',
+      '    ├── Footer / Children slot',
+      '    └── Action CTA with animated arrow',
+    ],
+    props: [
+      {
+        name: 'items?',
+        type: 'BentoCardProps[]',
+        description: 'Optional array of card configuration objects.',
+      },
+      {
+        name: 'children?',
+        type: 'ReactNode',
+        description: 'Composable BentoCard elements or custom content.',
+      },
+      {
+        name: 'cols?',
+        type: 'number',
+        description: 'Desktop grid column count (default: 4).',
+      },
+      {
+        name: 'gap?',
+        type: 'string',
+        description: 'Tailwind gap class between cards (default: "gap-3").',
+      },
+      {
+        name: 'gradient?',
+        type: 'boolean',
+        description:
+          'Toggle the repeating linear gradient texture (default: true).',
+      },
+      {
+        name: 'gradientAngle?',
+        type: 'number',
+        description:
+          'Angle of repeating gradient lines in degrees (default: 315).',
+      },
+      {
+        name: 'gradientOpacity?',
+        type: 'number',
+        description:
+          'Opacity of the repeating gradient texture (default: 0.01).',
+      },
+      {
+        name: 'gradientSpacing?',
+        type: 'number',
+        description:
+          'Spacing between repeating gradient lines in pixels (default: 24).',
+      },
+      {
+        name: 'gradientColor?',
+        type: 'string',
+        description:
+          'Color of repeating gradient lines (default: "var(--foreground)").',
+      },
+      {
+        name: 'title',
+        type: 'ReactNode',
+        description: 'Card title or headline.',
+      },
+      {
+        name: 'description?',
+        type: 'ReactNode',
+        description: 'Card secondary supporting text.',
+      },
+      {
+        name: 'icon?',
+        type: 'ReactNode',
+        description: 'Icon element rendered in the micro-interaction badge.',
+      },
+      {
+        name: 'badge?',
+        type: 'ReactNode',
+        description:
+          'Optional pill status badge rendered in top-right corner.',
+      },
+      {
+        name: 'href?',
+        type: 'string',
+        description:
+          'Internal route or external URL. Renders Next.js Link when provided.',
+      },
+      {
+        name: 'external?',
+        type: 'boolean',
+        description:
+          'Force external link behavior with target="_blank" and noopener.',
+      },
+      {
+        name: 'cta?',
+        type: 'ReactNode',
+        description: 'Action link text with animated arrow indicator.',
+      },
+      {
+        name: 'ctaHref?',
+        type: 'string',
+        description: 'Optional separate href targeting only the CTA element.',
+      },
+      {
+        name: 'header?',
+        type: 'ReactNode',
+        description:
+          'Slot for media, image previews, canvas, or custom headers.',
+      },
+      {
+        name: 'footer?',
+        type: 'ReactNode',
+        description: 'Slot for metadata, extra actions, or tags.',
+      },
+      {
+        name: 'featured?',
+        type: 'boolean',
+        description:
+          'Whether the card is the center featured item (defaults to card index 2).',
+      },
+    ],
+    sourceCode: bentoGridSourceCode,
+    usage: `import { BentoGrid, BentoCard } from '@/components/ui/bento-grid'
+import { IconPalette, IconWand, IconCube, IconAccessible, IconGauge } from '@tabler/icons-react'
+
+export default function BentoShowcase() {
+  return (
+    <BentoGrid
+      items={[
+        {
+          title: 'Craft at every scale',
+          description:
+            'Spacing, typography rhythm, and contrast compound into interfaces people feel.',
+          icon: <IconPalette size={18} stroke={1.5} />,
+          cta: 'Explore design tokens',
+          href: '/library',
+        },
+        {
+          title: 'Motion with meaning',
+          description:
+            'Every easing curve and spring tension is tuned so micro-interactions feel physical.',
+          icon: <IconWand size={18} stroke={1.5} />,
+          cta: 'View physics presets',
+          href: '/library/animated-text',
+        },
+        {
+          title: 'The architecture beneath',
+          description:
+            'An ecosystem of composable tokens, strict types, and structural rules designed to scale.',
+          icon: <IconCube size={18} stroke={1.5} />,
+          cta: 'Inspect system',
+          href: '/library',
+        },
+        {
+          title: 'Accessible by default',
+          description:
+            'Visible focus indicators, full keyboard navigation, and reduced-motion preferences.',
+          icon: <IconAccessible size={18} stroke={1.5} />,
+          cta: 'Check specs',
+          href: '/library',
+        },
+        {
+          title: 'Built to perform',
+          description:
+            'Lean DOM footprints and minimal re-renders keep modern apps lightning fast.',
+          icon: <IconGauge size={18} stroke={1.5} />,
+          cta: 'View on GitHub',
+          href: 'https://github.com/istmX',
+        },
+      ]}
+    />
+  )
+}`,
+    example:
+      'BentoGrid organizes features into a balanced 2-1-2 grid layout. The center card is prominently featured with 2x2 spans, while the surrounding cards provide concise, actionable focal points. Pass href to navigate seamlessly with Next.js Link, or use header to embed rich media previews.',
+    migrationExample: `+ import { BentoGrid } from '@/components/ui/bento-grid'
+
+- <div className="grid grid-cols-3 gap-4">...</div>
++ <BentoGrid items={cards} />`,
+  },
+  {
+    slug: 'scroll-parallax-hero',
+    name: 'Scroll Parallax Hero',
+    description:
+      'A scroll-driven perspective reveal hero where a centered heading gives way to decoupled multi-layer parallax cards, expanding to a full-bleed cinematic image and narrative feature cards.',
+    seoTitle: 'Scroll Parallax Hero — Cinematic Image Reveal | ISTMX',
+    seoDescription:
+      'A scroll-driven perspective reveal hero with Motion spring physics, decoupled multi-layer parallax cards, expanding full-bleed image frame, and narrative feature cards.',
+    keywords: [
+      'scroll parallax',
+      'parallax hero',
+      'image reveal',
+      'motion scroll',
+      'nextjs hero',
+      'react parallax',
+      'istmx',
+    ],
+    accessibility:
+      'Gracefully honors prefers-reduced-motion preferences by disabling heavy rotational and 3D transforms while preserving clean opacity transitions.',
+    interaction:
+      'Scrolls smoothly using calibrated spring damping. The hero headline lifts and blurs before the frame expands into full viewport scale with narrative features.',
+    limitations:
+      'Best placed inside scrollable pages with enough scroll length (default 380svh) to allow the stages of perspective and scale to unfold naturally.',
+    category: 'Hero & Presentation',
+    commandName: 'scroll-parallax-hero',
+    dependencies: ['motion', 'clsx', 'tailwind-merge'],
+    features: [
+      'Decoupled multi-layer floating parallax side cards',
+      'Full-bleed adaptive viewport expansion',
+      'Spring-damped physics for natural tactile scroll feel',
+      'Fully customizable text, images, and feature cards via props',
+      'Theme-aware colors using global CSS variables',
+      'Reduced motion fallback support',
+    ],
+    composition: [
+      'Sticky viewport container with perspective 1400px',
+      'Multi-word staggered parallax entrance and exit',
+      'Expanding rounded frame with dynamic scale and radius',
+      'Narrative feature cards with frosted glass styling',
+      'Chapter scrubber and progress tracker',
+    ],
+    props: [
+      {
+        name: 'image',
+        type: 'string',
+        description: 'Main image source URL to reveal.',
+      },
+      {
+        name: 'imageAlt?',
+        type: 'string',
+        description: 'Accessible alt text for the main image.',
+      },
+      {
+        name: 'sideImages?',
+        type: '[string, string]',
+        description:
+          'Tuple of [leftImage, rightImage] for floating side cards.',
+      },
+      {
+        name: 'heroHeading?',
+        type: 'string',
+        description:
+          'Opening headline in the sticky hero (supports \\n line breaks).',
+      },
+      {
+        name: 'hintText?',
+        type: 'string',
+        description:
+          'Prompt text next to the scroll indicator (defaults to "Scroll to begin").',
+      },
+      {
+        name: 'sectionHeading?',
+        type: 'string',
+        description:
+          'Subsequent section heading appearing as the frame expands (defaults to "Look closer.").',
+      },
+      {
+        name: 'sectionSubheading?',
+        type: 'string',
+        description: 'Subheading describing the study or scene.',
+      },
+      {
+        name: 'captionEyebrow?',
+        type: 'string',
+        description:
+          'Eyebrow tag above the final caption (defaults to "Focus").',
+      },
+      {
+        name: 'captionHeading?',
+        type: 'string',
+        description:
+          'Heading displayed over the expanded image (defaults to sectionHeading).',
+      },
+      {
+        name: 'captionSubheading?',
+        type: 'string',
+        description:
+          'Subheading displayed over the expanded image (defaults to sectionSubheading).',
+      },
+      {
+        name: 'marqueeText?',
+        type: 'string',
+        description: 'Repeating background marquee outline text.',
+      },
+      {
+        name: 'chapters?',
+        type: '[string, string, string]',
+        description: 'Three chapter labels shown in the bottom scrubber.',
+      },
+      {
+        name: 'features?',
+        type: 'ScrollParallaxHeroFeature[]',
+        description:
+          'Three narrative cards displayed after scrolling over the image.',
+      },
+      {
+        name: 'scrollLength?',
+        type: 'number',
+        description: 'Total scroll container height in svh (defaults to 380).',
+      },
+      {
+        name: 'fullBleed?',
+        type: 'boolean',
+        description:
+          'Whether the section spans full viewport width even inside constrained containers.',
+      },
+    ],
+    sourceCode: scrollParallaxHeroSourceCode,
+    usage: `import ScrollParallaxHero from '@/components/ui/scroll-parallax-hero'
+
+export default function HeroSection() {
+  return (
+    <ScrollParallaxHero
+      image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
+      imageAlt="Circuit board macro photography"
+      heroHeading="Make room for\\na different perspective."
+      sectionHeading="Look closer."
+      sectionSubheading="A study in scale and perspective"
+    />
+  )
+}`,
+    example:
+      'ScrollParallaxHero creates a cinematic pinned scroll experience. As you scroll, the opening headline lifts and blurs away, giving way to decoupled floating side cards and an expanding frame that fills the screen with narrative feature cards.',
+    migrationExample: `+ import ScrollParallaxHero from '@/components/ui/scroll-parallax-hero'
+
+- <section className="h-screen bg-cover">...</section>
++ <ScrollParallaxHero image={heroImage} />`,
   },
 ]
 

@@ -41,7 +41,7 @@ export default function ChatComposer({
       maxFileSizeBytes={maxFileSizeBytes}
       showVoice={showVoice}
       placeholder={placeholder}
-      glow={accentColor ? { color: accentColor } : {}}
+      accentColor={accentColor}
       onSubmit={onSubmit}
       onStop={onStop}
       onListeningChange={onListeningChange}

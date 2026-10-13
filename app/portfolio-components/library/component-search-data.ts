@@ -32,14 +32,6 @@ export const COMPONENT_SEARCH_ITEMS = [
       'Stream an AI response character by character with blur, wave, and a blinking caret.',
   },
   {
-    name: 'AI Chat Input',
-    slug: 'ai-chat-input',
-    href: '/library/ai-chat-input',
-    category: 'AI',
-    description:
-      'A configurable composer with file previews, attachment options, voice input, and send or stop controls.',
-  },
-  {
     name: 'Infinite Image Canvas',
     slug: 'infinite-image-canvas',
     href: '/library/infinite-image-canvas',
@@ -90,6 +82,22 @@ export const COMPONENT_SEARCH_ITEMS = [
     href: '/library/pixel-cat',
     category: 'Interactive',
     description: 'A customizable pixel cat that explores its container.',
+  },
+  {
+    name: 'Bento Grid',
+    slug: 'bento-grid',
+    href: '/library/bento-grid',
+    category: 'Layout',
+    description:
+      'A configurable 2-1-2 bento grid with concentric borders, 315° repeating gradient texture, and action links.',
+  },
+  {
+    name: 'Scroll Parallax Hero',
+    slug: 'scroll-parallax-hero',
+    href: '/library/scroll-parallax-hero',
+    category: 'Hero',
+    description:
+      'A scroll-driven perspective reveal hero with floating parallax cards, expanding image frame, and narrative features.',
   },
 ] as const
 

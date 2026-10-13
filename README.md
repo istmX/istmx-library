@@ -24,15 +24,22 @@ The portfolio also features Crew, CodeCat, and Noiseless. Their current descript
 
 ISTMX components are intended to be copied into a project and edited there. The CLI provides the source files; the consuming app owns the implementation and does not depend on a hosted ISTMX runtime.
 
-| Component              | What it does                                                                                                       | Documentation                                                        |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| **Animated Text**      | Rotates through text with configurable blur, fade, shimmer, slide, and per-character wave effects.                 | [Read docs](https://aryanonai.vercel.app/library/animated-text)      |
-| **Text Reveal**        | Reveals text line by line with configurable blur, opacity, and reversible scroll-linked character motion.          | [Read docs](https://aryanonai.vercel.app/library/text-reveal)        |
-| **Image Accordion**    | Presents images as a selectable stack and transitions the selected image into a preview canvas.                    | [Read docs](https://aryanonai.vercel.app/library/image-accordion)    |
-| **Dock Navigation**    | A navigation dock with pointer-proximity magnification, elastic lift, and moving tooltips.                         | [Read docs](https://aryanonai.vercel.app/library/dock-navigation)    |
-| **Mobile Menu Dock**   | A mobile navigation dock with a section menu and component search.                                                 | [Read docs](https://aryanonai.vercel.app/library/mobile-menu-dock)   |
-| **Scroll Story Cards** | A scroll-scrubbed story sequence where cards travel upward on a curved path and drive image and color transitions. | [Read docs](https://aryanonai.vercel.app/library/scroll-story-cards) |
-| **Pixel Cat**          | A configurable pixel-art cat that moves within its parent container and supports optional interaction.             | [Read docs](https://aryanonai.vercel.app/library/pixel-cat)          |
+| Component                  | What it does                                                                                                       | Documentation                                                            |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| **Button**                 | Motion-ready action button with intent colors, loading feedback, and reduced-motion states.                         | [Read docs](https://aryanonai.vercel.app/library/button)                |
+| **Animated Text**          | Rotates through text with configurable blur, fade, shimmer, slide, and per-character wave effects.                 | [Read docs](https://aryanonai.vercel.app/library/animated-text)          |
+| **Text Reveal**            | Reveals text line by line with configurable blur, opacity, and reversible scroll-linked character motion.          | [Read docs](https://aryanonai.vercel.app/library/text-reveal)            |
+| **Streaming Text**         | Streams AI response text character by character with entrance effects and blinking caret.                          | [Read docs](https://aryanonai.vercel.app/library/streaming-text)         |
+| **Image Accordion**        | Presents images as a selectable stack and transitions the selected image into a preview canvas.                    | [Read docs](https://aryanonai.vercel.app/library/image-accordion)        |
+| **Image Trail**            | Interactive cursor-driven image trail with velocity damping and rotation jitter.                                   | [Read docs](https://aryanonai.vercel.app/library/image-trail)            |
+| **Infinite Image Canvas**  | Pannable, continuous canvas of image cards with spring motion and metadata tags.                                  | [Read docs](https://aryanonai.vercel.app/library/infinite-image-canvas)  |
+| **Dock Navigation**        | A navigation dock with pointer-proximity magnification, elastic lift, and moving tooltips.                         | [Read docs](https://aryanonai.vercel.app/library/dock-navigation)        |
+| **Mobile Menu Dock**       | A mobile navigation dock with a section menu and component search.                                                 | [Read docs](https://aryanonai.vercel.app/library/mobile-menu-dock)       |
+| **Scroll Story Cards**     | A scroll-scrubbed story sequence where cards travel upward on a curved path and drive image and color transitions. | [Read docs](https://aryanonai.vercel.app/library/scroll-story-cards)     |
+| **Scroll Parallax Hero**   | Perspective reveal hero with floating parallax cards, expanding full-bleed frame, and narrative feature cards.     | [Read docs](https://aryanonai.vercel.app/library/scroll-parallax-hero)   |
+| **Pixel Cat**              | A configurable pixel-art cat that moves within its parent container and supports optional interaction.             | [Read docs](https://aryanonai.vercel.app/library/pixel-cat)              |
+| **Bento Grid**             | A flexible, concentric 2-1-2 bento layout with 315° repeating gradient texture, customizable slots, and links.     | [Read docs](https://aryanonai.vercel.app/library/bento-grid)             |
+| **AI Chat (Block)**        | Full AI assistant chat block with streaming messages, file attachments, sidebar navigation, and syntax highlighting.| [Read docs](https://aryanonai.vercel.app/blocks/ai-chat)                 |
 
 Each page documents installation, usage, props, accessibility behavior, interaction details, and implementation limitations. The Library source files live in [`components/ui/`](components/ui); the CLI’s packaged copies live in [`packages/cli/registry/`](packages/cli/registry).
 
@@ -41,6 +48,8 @@ Each page documents installation, usage, props, accessibility behavior, interact
 From the root of a React project configured with Tailwind CSS, run:
 
 ```sh
+npx @istmx/ui add bento-grid
+npx @istmx/ui add scroll-parallax-hero
 npx @istmx/ui add image-accordion
 npx @istmx/ui add text-reveal
 ```

@@ -122,7 +122,7 @@ export default function GitHubContributions() {
           <Link
             href="https://github.com/istmX"
             target="_blank"
-            rel="noreferrer"
+            rel="me noopener noreferrer"
             className="text-muted hover:text-foreground focus-visible:outline-foreground inline-flex items-center gap-1 text-[10px] font-medium tracking-[0.12em] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-3"
           >
             @istmX{' '}

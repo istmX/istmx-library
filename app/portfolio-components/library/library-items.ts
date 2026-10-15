@@ -10,6 +10,7 @@ import { streamingTextSourceCode } from './streaming-text-source'
 import { textRevealSourceCode } from './text-reveal-source'
 import { bentoGridSourceCode } from './bento-grid-source'
 import { scrollParallaxHeroSourceCode } from './scroll-parallax-hero-source'
+import { scrollCanvasCardsSourceCode } from './scroll-canvas-cards-source'
 
 export type LibraryProp = {
   name: string
@@ -1880,7 +1881,7 @@ export default function BentoShowcase() {
             'Lean DOM footprints and minimal re-renders keep modern apps lightning fast.',
           icon: <IconGauge size={18} stroke={1.5} />,
           cta: 'View on GitHub',
-          href: 'https://github.com/istmX',
+          href: 'https://github.com/istmX/istmx-library',
         },
       ]}
     />
@@ -2040,6 +2041,136 @@ export default function HeroSection() {
 
 - <section className="h-screen bg-cover">...</section>
 + <ScrollParallaxHero image={heroImage} />`,
+  },
+  {
+    slug: 'scroll-canvas-cards',
+    name: 'Scroll Canvas Cards',
+    description:
+      'A pinned scroll component with continuous canvas image crossfading, a compact centered card, and animated narrative text panels powered by GSAP and Motion.',
+    seoTitle:
+      'Scroll Canvas Cards — Pinned Canvas Image Sequencer | ISTMX',
+    seoDescription:
+      'A full-width, pinned scroll component using GSAP ScrollTrigger and HTML canvas for smooth image crossfading inside a compact centered card with Motion narrative text.',
+    keywords: [
+      'scroll canvas',
+      'canvas image sequence',
+      'pinned scroll',
+      'gsap scrolltrigger',
+      'react canvas',
+      'motion text',
+      'istmx',
+    ],
+    accessibility:
+      'Includes an accessible sr-only status announcer indicating the active slide and image description, with reduced-motion support for instant transitions.',
+    interaction:
+      'Pins to the top of the viewport and continuously blends canvas images as you scroll, staying pinned until the final slide and image are fully revealed.',
+    limitations:
+      'Best used with high-quality, preloaded images. The section requires vertical scroll height to progress through slides before releasing.',
+    category: 'Scroll / Canvas',
+    commandName: 'scroll-canvas-cards',
+    dependencies: [
+      'React',
+      'Motion',
+      'Tailwind CSS',
+      'clsx',
+      'tailwind-merge',
+      'gsap',
+      '@gsap/react',
+    ],
+    features: [
+      'Continuous smooth image crossfading on HTML canvas',
+      'Sticky viewport pinning that holds until the last card/image finishes',
+      'Curvy cubic-bezier and spring text entrance and exit transitions',
+      'Compact centered card layout with concentric borders and subtle shadows',
+      'Interactive spring-animated progress dots',
+      'Reduced-motion awareness for accessible browsing',
+    ],
+    composition: [
+      'Tall scroll track section establishing progress height',
+      'Sticky viewport container maintaining center alignment',
+      'Double-bordered card frame with high-DPI HTML canvas',
+      'Dual narrative side panels (eyebrow, heading, body)',
+      'GSAP ScrollTrigger scrub timeline',
+    ],
+    props: [
+      {
+        name: 'slides',
+        type: 'ScrollCanvasSlide[]',
+        description: 'Array of slide objects containing image URLs, alts, and left/right narrative text.',
+      },
+      {
+        name: 'backgroundColor',
+        type: 'string',
+        description: 'Background color for the entire scroll section. Defaults to cream #faf7f2.',
+      },
+      {
+        name: 'cardMaxWidth',
+        type: 'number',
+        description: 'Maximum width of the center canvas card in pixels. Defaults to 320.',
+      },
+      {
+        name: 'cardHeight',
+        type: 'number',
+        description: 'Height of the center canvas card in pixels. Defaults to 220.',
+      },
+      {
+        name: 'cardRadius',
+        type: 'number',
+        description: 'Border radius of the center card and canvas clip in pixels. Defaults to 16.',
+      },
+      {
+        name: 'scrollLength',
+        type: 'number',
+        description: 'Scroll duration multiplier in viewports. Defaults to 4.',
+      },
+      {
+        name: 'onSlideChange',
+        type: '(index: number) => void',
+        description: 'Callback invoked whenever the active slide index changes.',
+      },
+    ],
+    sourceCode: scrollCanvasCardsSourceCode,
+    usage: `import ScrollCanvasCards, { type ScrollCanvasSlide } from '@/components/ui/scroll-canvas-cards'
+
+const slides: ScrollCanvasSlide[] = [
+  {
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80',
+    imageAlt: 'Mountain peak rising above clouds',
+    leftEyebrow: 'Chapter 01',
+    leftHeading: 'Into the Peaks',
+    leftBody: 'Where granite meets sky, every ridge tells a story.',
+    rightEyebrow: 'Elevation',
+    rightHeading: '4,478 m',
+    rightBody: 'A pyramid of rock and snow.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=900&q=80',
+    imageAlt: 'Misty forest valley',
+    leftEyebrow: 'Chapter 02',
+    leftHeading: 'The Hidden Valley',
+    leftBody: 'Dawn light filters through ancient canopy.',
+    rightEyebrow: 'Ecosystem',
+    rightHeading: 'Old Growth',
+    rightBody: 'Thrived undisturbed for centuries.',
+  },
+]
+
+export function Demo() {
+  return (
+    <ScrollCanvasCards
+      slides={slides}
+      backgroundColor="#faf7f2"
+      cardMaxWidth={320}
+      cardHeight={220}
+    />
+  )
+}`,
+    example:
+      'ScrollCanvasCards pins in the viewport and continuously dissolves between canvas images while animating side narrative text with curvy transitions. It remains pinned until the last slide finishes.',
+    migrationExample: `+ import ScrollCanvasCards from '@/components/ui/scroll-canvas-cards'
+
+- <div className="carousel">...</div>
++ <ScrollCanvasCards slides={slides} />`,
   },
 ]
 

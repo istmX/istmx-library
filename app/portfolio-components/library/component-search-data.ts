@@ -99,6 +99,14 @@ export const COMPONENT_SEARCH_ITEMS = [
     description:
       'A scroll-driven perspective reveal hero with floating parallax cards, expanding image frame, and narrative features.',
   },
+  {
+    name: 'Scroll Canvas Cards',
+    slug: 'scroll-canvas-cards',
+    href: '/library/scroll-canvas-cards',
+    category: 'Scroll',
+    description:
+      'A pinned scroll component with continuous canvas image crossfading, a compact centered card, and animated narrative text.',
+  },
 ] as const
 
 export const SITE_SEARCH_ITEMS = [

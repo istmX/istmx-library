@@ -40,6 +40,8 @@ import InfiniteImageCanvas from '@/components/ui/infinite-image-canvas'
 import ScrollStoryCards from '@/components/ui/scroll-story-cards'
 import BentoGrid from '@/components/ui/bento-grid'
 import ScrollParallaxHero from '@/components/ui/scroll-parallax-hero'
+import ScrollCanvasCards from '@/components/ui/scroll-canvas-cards'
+import { SCROLL_CANVAS_SLIDES } from './scroll-canvas-cards-data'
 import {
   PixelCat,
   type PixelCatBreed,
@@ -298,7 +300,7 @@ function BentoGridPreview({ fullScreen = false }: { fullScreen?: boolean }) {
             icon: <IconGauge size={18} stroke={1.5} />,
             badge: 'Perf',
             cta: 'View source on GitHub',
-            href: 'https://github.com/istmX',
+            href: 'https://github.com/istmX/istmx-library',
           },
         ]}
       />
@@ -619,6 +621,19 @@ function Preview({
     )
   }
 
+  if (item.slug === 'scroll-canvas-cards') {
+    return (
+      <ScrollCanvasCards
+        slides={SCROLL_CANVAS_SLIDES}
+        backgroundColor="var(--background)"
+        cardMaxWidth={fullScreen ? 340 : 300}
+        cardHeight={fullScreen ? 240 : 200}
+        scrollLength={fullScreen ? 6 : 5.5}
+        scrollContainerRef={scrollContainerRef}
+      />
+    )
+  }
+
   return null
 }
 
@@ -633,6 +648,9 @@ const DEPENDENCY_TECH_ICONS: Partial<Record<string, TechIconName>> = {
   React: 'React',
   Motion: 'Motion',
   'Tailwind CSS': 'Tailwind CSS',
+  GSAP: 'GSAP',
+  gsap: 'GSAP',
+  '@gsap/react': 'GSAP',
 }
 
 function ManualInstallation({
@@ -804,7 +822,8 @@ export default function LibraryItemDocumentation({
 
         {view === 'preview' &&
         (item.slug === 'scroll-story-cards' ||
-          item.slug === 'scroll-parallax-hero') ? (
+          item.slug === 'scroll-parallax-hero' ||
+          item.slug === 'scroll-canvas-cards') ? (
           <div className="mt-3">
             <Preview item={item} />
           </div>
@@ -828,7 +847,7 @@ export default function LibraryItemDocumentation({
 
       <div className="mt-3 flex justify-end">
         <a
-          href={`https://github.com/istmX/final_portfolio_repo/blob/main/components/ui/${item.slug}.tsx`}
+          href={`https://github.com/istmX/istmx-library/blob/main/components/ui/${item.slug}.tsx`}
           target="_blank"
           rel="noreferrer"
           className="text-muted hover:text-foreground focus-visible:outline-foreground inline-flex items-center gap-1.5 text-xs transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -1137,7 +1156,7 @@ export default function LibraryItemDocumentation({
               Created by Aryan (istmX) for ISTMX. The source-first, copy-and-own
               philosophy is inspired by shadcn/ui.{' '}
               <a
-                href="https://aryanonai.vercel.app/"
+                href="/"
                 className="text-foreground decoration-border hover:decoration-foreground underline underline-offset-4 transition-colors"
               >
                 About the creator

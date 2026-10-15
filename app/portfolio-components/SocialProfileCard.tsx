@@ -63,7 +63,7 @@ export default function SocialProfileCard({
         href={href}
         aria-label={name === 'Email' ? 'Email Aryan' : `Open ${name} profile`}
         target={isEmail ? undefined : '_blank'}
-        rel={isEmail ? undefined : 'noreferrer'}
+        rel={isEmail ? undefined : 'me noopener noreferrer'}
         className={className}
       >
         {children}
@@ -129,7 +129,7 @@ export default function SocialProfileCard({
             <a
               href={href}
               target={isEmail ? undefined : '_blank'}
-              rel={isEmail ? undefined : 'noreferrer'}
+              rel={isEmail ? undefined : 'me noopener noreferrer'}
               className="text-foreground mt-3 inline-flex items-center gap-1.5 text-xs font-medium hover:underline focus-visible:underline focus-visible:outline-none"
             >
               {isEmail ? 'Send an email' : `Open ${name} profile`}

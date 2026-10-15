@@ -51,6 +51,10 @@ export default function TechStackSection() {
         >
           Technologies I use
         </h2>
+        <p className="text-muted mt-2 text-xs leading-5 sm:text-sm">
+          Core technologies, frameworks, and tools Aryan (istmX) uses across AI
+          engineering, full-stack web products, mobile apps, and cloud systems.
+        </p>
       </div>
       <TechStackPills technologies={TECHNOLOGIES} />
     </section>

@@ -8,20 +8,20 @@ import { LIBRARY_ITEMS } from '@/app/portfolio-components/library/library-items'
 import { SITE_URL } from '@/app/portfolio-components/site'
 
 export const metadata: Metadata = {
-  title: 'ISTMX Component Library — Editable React Components | Aryan',
+  title: 'ISTMX Component Library — Editable React Components',
   description:
-    'Explore ISTMX, Aryan’s source-first React component library. Browse editable components with live previews, installation commands, usage examples, and API references.',
+    'Explore ISTMX, Aryan’s (istmX) source-first React component library. Browse editable components with live previews, installation commands, usage examples, and API references.',
   alternates: { canonical: '/library' },
   authors: [{ name: 'Aryan', url: SITE_URL }],
   openGraph: {
     type: 'website',
     url: `${SITE_URL}/library`,
-    siteName: 'Aryan’s Portfolio and ISTMX',
+    siteName: 'Aryan (istmX) — Portfolio',
     title: 'ISTMX Component Library — Editable React Components',
     description:
-      'Source-first React components by Aryan, with editable code, live previews, installation instructions, and API documentation.',
+      'Source-first React components by Aryan (istmX), with editable code, live previews, installation instructions, and API documentation.',
     locale: 'en_IN',
-    images: [{ url: '/hero.png', alt: 'Aryan, creator of ISTMX' }],
+    images: [{ url: '/hero.png', alt: 'Aryan (istmX), creator of ISTMX' }],
   },
   twitter: {
     card: 'summary_large_image',

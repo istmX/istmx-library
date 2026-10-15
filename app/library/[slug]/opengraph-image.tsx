@@ -81,7 +81,7 @@ export default async function OpenGraphImage({
         }}
       >
         <span>Editable React source · Previews · API reference</span>
-        <span>aryanonai.vercel.app</span>
+        <span>aryanxai.vercel.app</span>
       </div>
     </div>,
     size,

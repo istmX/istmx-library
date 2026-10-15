@@ -33,7 +33,7 @@ export async function generateMetadata({
         openGraph: {
           type: 'website',
           url: `${SITE_URL}/library/${item.slug}`,
-          siteName: 'Aryan’s Portfolio and ISTMX',
+          siteName: 'Aryan (istmX) — Portfolio',
           title: item.seoTitle,
           description: item.seoDescription,
           locale: 'en_IN',
@@ -111,7 +111,7 @@ export default async function LibraryItemPage({ params }: LibraryDetailProps) {
         name: item.name,
         description: item.seoDescription,
         url: pageUrl,
-        codeRepository: `https://github.com/istmX/final_portfolio_repo/tree/main/components/ui/${item.slug}.tsx`,
+        codeRepository: `https://github.com/istmX/istmx-library/tree/main/components/ui/${item.slug}.tsx`,
         programmingLanguage: 'TypeScript',
         author: { '@id': `${SITE_URL}/#aryan` },
         keywords: item.keywords,

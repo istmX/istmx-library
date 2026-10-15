@@ -55,7 +55,7 @@ export default function IntroHero() {
             <div className="bg-surface ring-border/70 relative size-20 shrink-0 overflow-hidden rounded-xl shadow-lg ring-1 shadow-neutral-950/20 sm:size-24">
               <Image
                 src="/hero.png"
-                alt="Illustrated portrait of Aryan"
+                alt="Portrait of Aryan (istmX)"
                 fill
                 sizes="(max-width: 640px) 80px, 96px"
                 className="object-cover"
@@ -72,6 +72,8 @@ export default function IntroHero() {
               </h1>
               <a
                 href="https://github.com/istmX"
+                target="_blank"
+                rel="me noopener noreferrer"
                 className="text-muted hover:text-foreground mt-0.5 inline-flex text-xs transition-colors"
                 aria-label="Aryan on GitHub as istmX"
               >

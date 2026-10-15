@@ -143,13 +143,11 @@ export default function InstallCommand({
                       : {
                           opacity: 0,
                           y: 3,
-                          backgroundColor: 'var(--surface)',
                         }
                   }
                   animate={{
                     opacity: 1,
                     y: 0,
-                    backgroundColor: 'transparent',
                   }}
                   exit={{ opacity: 0, y: -2 }}
                   transition={{ duration: reduceMotion ? 0 : 0.22 }}
@@ -177,14 +175,12 @@ export default function InstallCommand({
                         opacity: 0,
                         x: -4,
                         filter: 'blur(3px)',
-                        backgroundColor: 'var(--surface)',
                       }
                 }
                 animate={{
                   opacity: 1,
                   x: 0,
                   filter: 'blur(0px)',
-                  backgroundColor: 'transparent',
                 }}
                 exit={
                   reduceMotion

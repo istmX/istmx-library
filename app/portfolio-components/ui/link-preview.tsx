@@ -126,7 +126,7 @@ export function LinkPreview({
         href={url}
         aria-label={label}
         target="_blank"
-        rel="noreferrer"
+        rel="me noopener noreferrer"
         onMouseMove={handleMouseMove}
         className={className}
       >
@@ -138,7 +138,7 @@ export function LinkPreview({
           <motion.a
             href={url}
             target="_blank"
-            rel="noreferrer"
+            rel="me noopener noreferrer"
             aria-label={`Open ${label}`}
             initial={
               shouldReduceMotion

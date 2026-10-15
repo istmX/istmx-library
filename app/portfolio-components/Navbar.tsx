@@ -157,7 +157,7 @@ function Navbar() {
           </button>
 
           <a
-            href="https://github.com/istmX/final_portfolio_repo"
+            href="https://github.com/istmX/istmx-library"
             target="_blank"
             rel="noreferrer"
             aria-label="Open the istmX portfolio repository on GitHub"

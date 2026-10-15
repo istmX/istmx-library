@@ -23,37 +23,37 @@ const GeistMonoFont = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Aryan (istmX) | AI Developer & ISTMX Creator',
-    template: '%s',
+    default: 'Aryan (istmX) — Full-Stack Developer & AI Engineer',
+    template: '%s | Aryan (istmX)',
   },
   description:
-    'Aryan (istmX) is a developer and student in India building AI agents, full-stack products, and ISTMX, a source-first React component library.',
-  applicationName: 'Aryan’s portfolio and ISTMX component library',
+    'Aryan is the person behind the developer identity istmX. Full-stack developer and AI engineer building ISTMX Skills, ISTMX UI, Crew, CodeCat, and AI-powered developer tools.',
+  applicationName: 'Aryan (istmX) Portfolio',
   authors: [{ name: 'Aryan', url: SITE_URL }],
   creator: 'Aryan',
   category: 'technology',
   openGraph: {
     type: 'website',
     url: SITE_URL,
-    siteName: 'Aryan’s Portfolio',
-    title: 'Aryan (istmX) | AI Developer & ISTMX Creator',
+    siteName: 'Aryan (istmX) — Portfolio',
+    title: 'Aryan (istmX) — Full-Stack Developer & AI Engineer',
     description:
-      'Aryan builds AI agents, full-stack products, and ISTMX, a source-first React component library.',
+      'Aryan is the person behind the developer identity istmX. Full-stack developer and AI engineer building ISTMX Skills, ISTMX UI, Crew, CodeCat, and AI-powered developer tools.',
     locale: 'en_IN',
     images: [
       {
         url: '/hero.png',
         width: 1536,
         height: 1536,
-        alt: 'Illustrated portrait of Aryan (istmX)',
+        alt: 'Portrait of Aryan (istmX)',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aryan (istmX) | AI Developer & ISTMX Creator',
+    title: 'Aryan (istmX) — Full-Stack Developer & AI Engineer',
     description:
-      'Aryan builds AI agents, full-stack products, and ISTMX, a source-first React component library.',
+      "I'm Aryan, a full-stack developer and AI engineer working on AI-powered applications, developer tools, and thoughtful software experiences.",
     images: ['/hero.png'],
   },
   robots: {
@@ -66,6 +66,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
       'max-video-preview': -1,
     },
+  },
+  verification: {
+    google: 'googlebcdf164ce86ae3d1',
   },
 }
 

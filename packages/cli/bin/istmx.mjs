@@ -6,7 +6,7 @@ import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const VERSION = '0.1.11'
+const VERSION = '0.1.12'
 const COMPONENTS = {
   button: { fileName: 'button.tsx' },
   'animated-text': { fileName: 'animated-text.tsx' },
@@ -33,6 +33,10 @@ const COMPONENTS = {
     dependencies: ['@tabler/icons-react'],
   },
   'scroll-parallax-hero': { fileName: 'scroll-parallax-hero.tsx' },
+  'scroll-canvas-cards': {
+    fileName: 'scroll-canvas-cards.tsx',
+    dependencies: ['gsap', '@gsap/react'],
+  },
   'ai-chat-block': {
     directory: 'ai-chat-block',
     dependencies: ['@tabler/icons-react'],

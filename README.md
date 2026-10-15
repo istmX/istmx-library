@@ -4,18 +4,18 @@ This repository contains the personal portfolio of **Aryan**. He uses **istmX** 
 
 |                   |                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------- |
-| Website           | [aryanonai.vercel.app](https://aryanonai.vercel.app/)                            |
+| Website           | [aryanxai.vercel.app](https://aryanxai.vercel.app/)                            |
 | GitHub profile    | [github.com/istmX](https://github.com/istmX)                                     |
 | This repository   | [https://github.com/istmX/istmx-library](https://github.com/istmX/istmx-library) |
-| Component library | [ISTMX Library](https://aryanonai.vercel.app/library)                            |
+| Component library | [ISTMX Library](https://aryanxai.vercel.app/library)                            |
 
 ## Identity and projects
 
-Aryan is the person behind the developer identity `istmX` and also uses `aryanxai` as an account username. **ISTMX** is his project ecosystem, not a separate person or company. Its current projects include:
+Aryan is the person behind the developer identity `istmX`. **ISTMX** is his project ecosystem, not a separate person or company. Its current projects include:
 
 - **[ISTMX Skills](https://istmx.dpdns.org/)** — reusable skills and structured workflows for AI coding agents. [Source on GitHub](https://github.com/istmX/skills).
 - **[ISTMX UI](https://www.npmjs.com/package/@istmx/ui)** — a CLI that adds editable component source to a developer’s project.
-- **[ISTMX Library](https://aryanonai.vercel.app/library)** — documentation, previews, installation instructions, usage examples, and API references for the components.
+- **[ISTMX Library](https://aryanxai.vercel.app/library)** — documentation, previews, installation instructions, usage examples, and API references for the components.
 - **ISTMX Blocks** — ready-to-preview interface patterns composed from editable components.
 
 The portfolio also features Crew, CodeCat, and Noiseless. Their current descriptions and links are maintained in [`projectData.ts`](app/portfolio-components/projectData.ts).
@@ -26,20 +26,21 @@ ISTMX components are intended to be copied into a project and edited there. The 
 
 | Component                  | What it does                                                                                                       | Documentation                                                            |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| **Button**                 | Motion-ready action button with intent colors, loading feedback, and reduced-motion states.                         | [Read docs](https://aryanonai.vercel.app/library/button)                |
-| **Animated Text**          | Rotates through text with configurable blur, fade, shimmer, slide, and per-character wave effects.                 | [Read docs](https://aryanonai.vercel.app/library/animated-text)          |
-| **Text Reveal**            | Reveals text line by line with configurable blur, opacity, and reversible scroll-linked character motion.          | [Read docs](https://aryanonai.vercel.app/library/text-reveal)            |
-| **Streaming Text**         | Streams AI response text character by character with entrance effects and blinking caret.                          | [Read docs](https://aryanonai.vercel.app/library/streaming-text)         |
-| **Image Accordion**        | Presents images as a selectable stack and transitions the selected image into a preview canvas.                    | [Read docs](https://aryanonai.vercel.app/library/image-accordion)        |
-| **Image Trail**            | Interactive cursor-driven image trail with velocity damping and rotation jitter.                                   | [Read docs](https://aryanonai.vercel.app/library/image-trail)            |
-| **Infinite Image Canvas**  | Pannable, continuous canvas of image cards with spring motion and metadata tags.                                  | [Read docs](https://aryanonai.vercel.app/library/infinite-image-canvas)  |
-| **Dock Navigation**        | A navigation dock with pointer-proximity magnification, elastic lift, and moving tooltips.                         | [Read docs](https://aryanonai.vercel.app/library/dock-navigation)        |
-| **Mobile Menu Dock**       | A mobile navigation dock with a section menu and component search.                                                 | [Read docs](https://aryanonai.vercel.app/library/mobile-menu-dock)       |
-| **Scroll Story Cards**     | A scroll-scrubbed story sequence where cards travel upward on a curved path and drive image and color transitions. | [Read docs](https://aryanonai.vercel.app/library/scroll-story-cards)     |
-| **Scroll Parallax Hero**   | Perspective reveal hero with floating parallax cards, expanding full-bleed frame, and narrative feature cards.     | [Read docs](https://aryanonai.vercel.app/library/scroll-parallax-hero)   |
-| **Pixel Cat**              | A configurable pixel-art cat that moves within its parent container and supports optional interaction.             | [Read docs](https://aryanonai.vercel.app/library/pixel-cat)              |
-| **Bento Grid**             | A flexible, concentric 2-1-2 bento layout with 315° repeating gradient texture, customizable slots, and links.     | [Read docs](https://aryanonai.vercel.app/library/bento-grid)             |
-| **AI Chat (Block)**        | Full AI assistant chat block with streaming messages, file attachments, sidebar navigation, and syntax highlighting.| [Read docs](https://aryanonai.vercel.app/blocks/ai-chat)                 |
+| **Button**                 | Motion-ready action button with intent colors, loading feedback, and reduced-motion states.                         | [Read docs](https://aryanxai.vercel.app/library/button)                |
+| **Animated Text**          | Rotates through text with configurable blur, fade, shimmer, slide, and per-character wave effects.                 | [Read docs](https://aryanxai.vercel.app/library/animated-text)          |
+| **Text Reveal**            | Reveals text line by line with configurable blur, opacity, and reversible scroll-linked character motion.          | [Read docs](https://aryanxai.vercel.app/library/text-reveal)            |
+| **Streaming Text**         | Streams AI response text character by character with entrance effects and blinking caret.                          | [Read docs](https://aryanxai.vercel.app/library/streaming-text)         |
+| **Image Accordion**        | Presents images as a selectable stack and transitions the selected image into a preview canvas.                    | [Read docs](https://aryanxai.vercel.app/library/image-accordion)        |
+| **Image Trail**            | Interactive cursor-driven image trail with velocity damping and rotation jitter.                                   | [Read docs](https://aryanxai.vercel.app/library/image-trail)            |
+| **Infinite Image Canvas**  | Pannable, continuous canvas of image cards with spring motion and metadata tags.                                  | [Read docs](https://aryanxai.vercel.app/library/infinite-image-canvas)  |
+| **Dock Navigation**        | A navigation dock with pointer-proximity magnification, elastic lift, and moving tooltips.                         | [Read docs](https://aryanxai.vercel.app/library/dock-navigation)        |
+| **Mobile Menu Dock**       | A mobile navigation dock with a section menu and component search.                                                 | [Read docs](https://aryanxai.vercel.app/library/mobile-menu-dock)       |
+| **Scroll Story Cards**     | A scroll-scrubbed story sequence where cards travel upward on a curved path and drive image and color transitions. | [Read docs](https://aryanxai.vercel.app/library/scroll-story-cards)     |
+| **Scroll Parallax Hero**   | Perspective reveal hero with floating parallax cards, expanding full-bleed frame, and narrative feature cards.     | [Read docs](https://aryanxai.vercel.app/library/scroll-parallax-hero)   |
+| **Scroll Canvas Cards**    | Pinned viewport canvas cross-fade sequence with smooth curvy GSAP ScrollTrigger and dynamic side narrative text.   | [Read docs](https://aryanxai.vercel.app/library/scroll-canvas-cards)   |
+| **Pixel Cat**              | A configurable pixel-art cat that moves within its parent container and supports optional interaction.             | [Read docs](https://aryanxai.vercel.app/library/pixel-cat)              |
+| **Bento Grid**             | A flexible, concentric 2-1-2 bento layout with 315° repeating gradient texture, customizable slots, and links.     | [Read docs](https://aryanxai.vercel.app/library/bento-grid)             |
+| **AI Chat (Block)**        | Full AI assistant chat block with streaming messages, file attachments, sidebar navigation, and syntax highlighting.| [Read docs](https://aryanxai.vercel.app/blocks/ai-chat)                 |
 
 Each page documents installation, usage, props, accessibility behavior, interaction details, and implementation limitations. The Library source files live in [`components/ui/`](components/ui); the CLI’s packaged copies live in [`packages/cli/registry/`](packages/cli/registry).
 
@@ -149,8 +150,8 @@ public/llms.txt                      AI/search-readable site guide
 ### Install and run
 
 ```sh
-git clone https://github.com/istmX/final_portfolio_repo.git
-cd final_portfolio_repo
+git clone https://github.com/istmX/istmx-library.git
+cd istmx-library
 npm install
 npm run dev
 ```

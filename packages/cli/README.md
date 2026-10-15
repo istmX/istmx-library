@@ -69,6 +69,12 @@ Add the scroll parallax hero with:
 npx @istmx/ui add scroll-parallax-hero
 ```
 
+Add the scroll canvas cards with:
+
+```sh
+npx @istmx/ui add scroll-canvas-cards
+```
+
 Add the interactive pixel cat with:
 
 ```sh

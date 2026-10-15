@@ -6,23 +6,23 @@ import { BLOG_POSTS } from './blogData'
 import { SITE_URL } from '@/app/portfolio-components/site'
 
 export const metadata: Metadata = {
-  title: 'Writing | Aryan',
+  title: 'Writing & Technical Notes',
   description:
-    'Practical articles by Aryan on AI agents, Python, FastAPI, backend engineering, full-stack development, and mobile apps.',
+    'Practical articles by Aryan (istmX) on AI agents, Python, FastAPI, backend engineering, full-stack development, and mobile apps.',
   alternates: { canonical: '/blogs' },
   openGraph: {
     type: 'website',
     url: `${SITE_URL}/blogs`,
-    title: 'Writing on AI and software engineering | Aryan',
+    title: 'Writing on AI and Software Engineering | Aryan (istmX)',
     description:
       'Practical notes on AI agents, Python, FastAPI, backend systems, and product development.',
-    siteName: 'Aryan’s Portfolio',
+    siteName: 'Aryan (istmX) — Portfolio',
     locale: 'en_IN',
     images: ['/hero.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Writing on AI and software engineering | Aryan',
+    title: 'Writing on AI and Software Engineering | Aryan (istmX)',
     description:
       'Practical notes on AI agents, Python, FastAPI, backend systems, and product development.',
     images: ['/hero.png'],
@@ -33,7 +33,7 @@ export default function BlogsPage() {
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Writing on AI and software engineering | Aryan',
+    name: 'Writing on AI and Software Engineering | Aryan (istmX)',
     description:
       'Practical articles on AI agents, Python, FastAPI, backend systems, full-stack development, and mobile apps.',
     url: `${SITE_URL}/blogs`,

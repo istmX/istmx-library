@@ -29,6 +29,7 @@ export const COMPONENT_ICONS = {
   'pixel-cat': IconCat,
   'bento-grid': IconLayoutGrid,
   'scroll-parallax-hero': IconArrowsMoveVertical,
+  'scroll-canvas-cards': IconArrowsMoveVertical,
 } as const
 
 export default function ComponentsSpotlight() {
@@ -39,15 +40,25 @@ export default function ComponentsSpotlight() {
       className="border-border/60 border-y border-dotted px-8 py-5 sm:px-8 sm:py-7"
     >
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <h2
-          id="components-spotlight-title"
-          className="font-display text-2xl font-semibold tracking-tight sm:text-3xl"
-        >
-          Components
-          <sup className="text-muted ml-1.5 align-super font-sans text-xs font-normal">
-            ({String(COMPONENT_SEARCH_ITEMS.length).padStart(2, '0')})
-          </sup>
-        </h2>
+        <div>
+          <h2
+            id="components-spotlight-title"
+            className="font-display text-2xl font-semibold tracking-tight sm:text-3xl"
+          >
+            Components
+            <sup className="text-muted ml-1.5 align-super font-sans text-xs font-normal">
+              ({String(COMPONENT_SEARCH_ITEMS.length).padStart(2, '0')})
+            </sup>
+          </h2>
+          <p className="text-muted mt-1 text-xs leading-5">
+            Source-first React components from the ISTMX library. Copy editable
+            source directly into your project or add via{' '}
+            <code className="text-foreground font-mono font-medium">
+              @istmx/ui
+            </code>{' '}
+            CLI.
+          </p>
+        </div>
         <div className="text-muted flex items-center gap-2 pb-1">
           <p className="text-xs italic">Free to copy. Yours to keep.</p>
           <IconArrowCurveRight

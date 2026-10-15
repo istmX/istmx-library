@@ -22,16 +22,16 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getBlogPost(slug)
 
-  if (!post) return { title: 'Article not found | Aryan' }
+  if (!post) return { title: 'Article not found' }
 
   return {
-    title: `${post.title} | Aryan`,
+    title: post.title,
     description: post.excerpt,
     alternates: { canonical: `/blogs/${post.slug}` },
     openGraph: {
       type: 'article',
       url: `${SITE_URL}/blogs/${post.slug}`,
-      siteName: 'Aryan’s Portfolio',
+      siteName: 'Aryan (istmX) — Portfolio',
       title: post.title,
       description: post.excerpt,
       locale: 'en_IN',

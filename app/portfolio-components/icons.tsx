@@ -68,6 +68,8 @@ const TECH_ICONS = {
   'AWS ': null,
   Pydantic: siPydantic,
   GSAP: siGsap,
+  gsap: siGsap,
+  '@gsap/react': siGsap,
   Lenis: null,
   SQLAlchemy: siSqlalchemy,
   Playwright: null,
